@@ -12,5 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require bootstrap
+//= require lodash
+//= require angular
+//= require ng-rails-csrf
+//= require restangular
 //= require_tree .
