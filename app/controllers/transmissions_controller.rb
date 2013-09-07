@@ -9,11 +9,6 @@ class TransmissionsController < ApplicationController
     # Just supply a url in song params, before validation, the song
     # data will be automatically scraped based on the URL.
     @song = Song.new(song_params)
-    
-    params[:tags].each do |name|
-      tag = Tag.find_or_create_by(name: name.downcase.strip)
-      @song.tags << tag
-    end
 
     puts @song.tags
 
