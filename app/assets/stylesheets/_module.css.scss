@@ -11,7 +11,6 @@
 .module-send {
   .form-control {
     @include placeholder($yellow-dark);
-    @include form-control-focus($yellow);
 
     background-color: $yellow;
     color: $white;

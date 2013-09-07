@@ -7,6 +7,15 @@
   color: $white;
 }
 
+.new-tag {
+  border: 0;
+  background: transparent;
+  font-style: italic;
+  &:focus {
+    outline: 0;
+  }
+}
+
 .module-send {
   .tags {
     background-color: $yellow;
@@ -16,6 +25,7 @@
 
   .new-tag {
     @include placeholder($yellow-dark);
+    color: $yellow-dark;
   }
 }
 
@@ -23,17 +33,11 @@
   .tags {
     background-color: $purple;
     color: $purple-dark;
-    margin-bottom: 15px;
+    margin-bottom: 0;
   }
 
   .new-tag {
     @include placeholder($purple-dark);
+    color: $purple-dark;
   }
-}
-
-.new-tag {
-  border: 0;
-  background: transparent;
-  color: $yellow-dark;
-  font-style: italic;
 }
