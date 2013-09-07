@@ -15,4 +15,9 @@ angular.module('nativeFM.controllers', []).
     function() {
 
     }
+  ]).
+  controller('SentSongsCtrl', [
+    function() {
+
+    }
   ]);
