@@ -7,23 +7,18 @@ class TransmissionsController < ApplicationController
     @transmission = Transmission.new
 
     # Just supply a url in song params, before validation, the song
-    # data will be automatically scraped based on the URL.
-    @song = Song.new(song_params)
+    # data will be automatically scraped based on the URL. If the
+    # song 
     
-    params[:tags].each do |name|
-      tag = Tag.find_or_create_by(name: name.downcase.strip)
-      @song.tags << tag
+    @song = Song.find_or_initialize_by(url: song_params[:url])
+    if !@song.location
+      @song.location = song_params[:location]
     end
-
-    puts @song.tags
-
     @song.save
 
     @transmission.song = @song
     @transmission.sender = current_user
     @transmission.save
-
-
     
     respond_with(@transmission)
   end
