@@ -33,7 +33,7 @@
           | #
           span.tag-name Atlanta
         span.tag>
-          input.new-tag placeholder="add more"
+          input.new-tag placeholder="+add more"
       .text-center
         button.btn-primary.btn-lg.send-song send song
     .module.module-preferences
@@ -47,7 +47,8 @@
           | #
           span.tag-name indie punk
         span.tag>
-          input.new-tag placeholder="add more"
+          input.new-tag placeholder="+add more"
   .col-lg-6
     .module
       h3.module-header receive songs in return
+      #receivedSongMap gm-map=true gm-map-id="'receivedSongMap'" gm-map-options="{mapTypeControlOptions:{mapTypeIds: [google.maps.MapTypeId.ROADMAP]},streetViewControl: false,zoom:1}"

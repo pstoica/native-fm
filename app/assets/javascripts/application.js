@@ -17,6 +17,7 @@
 //= require angular
 //= require ng-rails-csrf
 //= require angular-promise-tracker
+//= require angular-gm
 //= require restangular
 //= require controllers
 //= require directives
