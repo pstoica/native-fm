@@ -1,0 +1,43 @@
+.tags {
+  padding: 6px 12px;
+  font-style: italic;
+}
+
+.tag-name {
+  color: $white;
+}
+
+.new-tag {
+  border: 0;
+  background: transparent;
+  font-style: italic;
+  &:focus {
+    outline: 0;
+  }
+}
+
+.module-send {
+  .tags {
+    background-color: $yellow;
+    color: $yellow-dark;
+    margin-bottom: 15px;
+  }
+
+  .new-tag {
+    @include placeholder($yellow-dark);
+    color: $yellow-dark;
+  }
+}
+
+.module-preferences {
+  .tags {
+    background-color: $purple;
+    color: $purple-dark;
+    margin-bottom: 0;
+  }
+
+  .new-tag {
+    @include placeholder($purple-dark);
+    color: $purple-dark;
+  }
+}

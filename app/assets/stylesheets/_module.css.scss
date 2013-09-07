@@ -1,0 +1,60 @@
+.module {
+  background: $white;
+  padding: 10px;
+  margin-bottom: 15px;
+
+  .text-muted {
+    font-weight: lighter;
+  }
+
+  .track-name, .artist-name {
+    font-weight: bold;
+  }
+}
+
+.module-header {
+  margin-top: 0;
+}
+
+.module-send {
+  .form-control {
+    @include placeholder($yellow-dark);
+
+    background-color: $yellow;
+    color: $white;
+    font-style: italic;
+  }
+
+  .track-name {
+    color: $yellow;
+  }
+
+  .send-song {
+    padding: 5px 30px;
+    font-weight: bold;
+  }
+}
+
+.module-received {
+  a, .track-name {
+    color: $orange;
+  }
+}
+
+.module-sent {
+  table {
+    margin-bottom: 0;
+
+    tr:first-child td {
+      border-top: 0;
+    }
+  }
+
+  .song-counter {
+    width: 5%;
+  }
+
+  .track-name {
+    color: $blue;
+  }
+}
