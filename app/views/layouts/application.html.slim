@@ -1,12 +1,13 @@
 doctype html
-html ng-app="NativeFM"
+html ng-app="nativeFM"
   head
     meta content="width=device-width, initial-scale=1.0" name="viewport" 
       title= "NativeFM"
       meta content=(content_for?(:description) ? yield(:description) : "NativeFM") name="description" 
-        = stylesheet_link_tag "application", media: "all"
-        = csrf_meta_tags
-        = yield(:head)
+      = stylesheet_link_tag "application", media: "all"
+      script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"
+      = csrf_meta_tags
+      = yield(:head)
   body
     .navbar.navbar-default.navbar-fixed-top
       .container
