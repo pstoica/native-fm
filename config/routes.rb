@@ -1,8 +1,8 @@
 NativeFm::Application.routes.draw do
-  get "user/sent", to: "user#sent"
-  get "user/received", to: "user#received"
 
-  resources :transmissions, only: :create
+  resources :transmissions, only: [:create, :show], :defaults => { :format => 'json' }
+  get "user/sent", to: "user#sent", :defaults => { :format => 'json' }
+  get "user/received", to: "user#received", :defaults => { :format => 'json' }
   
   root to: 'main#index'
 
