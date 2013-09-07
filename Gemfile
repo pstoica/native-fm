@@ -15,6 +15,7 @@ gem 'slim'
 gem 'unicorn'
 gem 'figaro'
 
+gem 'websocket-rails'
 gem 'bootstrap-sass', git: 'git://github.com/thomas-mcdonald/bootstrap-sass.git', branch: '3'
 
 group :development do
