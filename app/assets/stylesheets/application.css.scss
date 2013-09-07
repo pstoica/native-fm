@@ -29,3 +29,9 @@ body {
 #receivedSongMap {
   height: 200px;
 }
+
+@media (max-width: $screen-md) {
+  .navbar-header {
+    float: left;
+  }
+}
