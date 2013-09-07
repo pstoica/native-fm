@@ -1,0 +1,24 @@
+.tags {
+  padding: 6px 12px;
+  font-style: italic;
+}
+
+.module-send {
+  .tags {
+    background-color: $yellow;
+    color: $yellow-dark;
+    margin-bottom: 15px;
+  }
+
+  .tag-name {
+    color: $white;
+  }
+}
+
+.new-tag {
+  @include placeholder($yellow-dark);
+  border: 0;
+  background: transparent;
+  color: $yellow-dark;
+  font-style: italic;
+}

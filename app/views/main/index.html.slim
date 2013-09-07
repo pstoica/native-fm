@@ -1,2 +1,45 @@
-h3 Welcome to NativeFM!
-p sup.
+.row
+  .col-lg-6
+    .module.module-send
+      h3.module-header send a local song you love to a stranger
+      .form-group
+        input.form-control type="text" placeholder="Bandcamp or SoundCloud track URL"
+      h4
+        span.track-name Christmas
+        span.text-muted< by
+        span.artist-name< Places to Hide
+      .form-group
+        input.form-control.band-location type="text" placeholder="band location"
+      .tags
+        span.tag>
+          | #
+          span.tag-name 90's
+        span.tag>
+          | #
+          span.tag-name punk
+        span.tag>
+          | #
+          span.tag-name emo
+        span.tag>
+          | #
+          span.tag-name indie pop
+        span.tag>
+          | #
+          span.tag-name indie rock
+        span.tag>
+          | #
+          span.tag-name pop
+        span.tag>
+          | #
+          span.tag-name Atlanta
+        span.tag>
+          | #
+          input.new-tag placeholder="add more"
+      .text-center
+        button.btn-primary.btn-lg.send-song send song
+    .module
+      h3.module-header song preferences
+      p.text-muted let us know what sort of songs you would like to receive by adding tags
+  .col-lg-6
+    .module
+      h3.module-header receive songs in return

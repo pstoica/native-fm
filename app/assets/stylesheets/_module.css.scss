@@ -1,0 +1,37 @@
+.module {
+  background: $white;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.module-header {
+  margin-top: 0;
+}
+
+.module-send {
+  .form-control {
+    @include placeholder($yellow-dark);
+    @include form-control-focus($yellow);
+
+    background-color: $yellow;
+    color: $white;
+    font-style: italic;
+  }
+
+  .track-name {
+    color: $yellow;
+  }
+
+  .text-muted {
+    font-weight: lighter;
+  }
+
+  .track-name, .artist-name {
+    font-weight: bold;
+  }
+
+  .send-song {
+    padding: 5px 30px;
+    font-weight: bold;
+  }
+}

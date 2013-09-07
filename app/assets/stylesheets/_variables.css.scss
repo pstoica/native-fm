@@ -1,17 +1,26 @@
 /* semantic color names */
 $green:  #62c193;
 $purple: #8d7aae;
+$purple-dark: #584B6F;
 $orange: #e86243;
 $yellow: #f69944;
+$yellow-dark: #8F5921;
 $black:  #414042;
+$gray-medium: #808285;
+$gray-light: #BCBEC0;
 $white: #fff;
 
+/* fonts */
+$font-family-sans-serif: 'proxima-nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-size-base: 17px;
+$headings-font-weight: 600;
+
 /* brand colors */
-$brand-primary: $purple;
+$brand-primary: $black;
 $brand-success: $green;
 $brand-warning: $yellow;
 $brand-danger:  $orange;
-$brand-info:    $yellow;
+$brand-info:    $purple;
 
 /* body */
 $body-bg: $green;
@@ -22,3 +31,7 @@ $navbar-default-color: $white;
 $navbar-default-link-color: $white;
 $navbar-default-link-hover-color: $white;
 $navbar-default-brand-hover-color: $white;
+
+$border-radius-base: 0;
+$border-radius-large: 0;
+$border-radius-small: 0;
