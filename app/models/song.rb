@@ -4,12 +4,12 @@ require 'open-uri'
 class Song < ActiveRecord::Base
   has_and_belongs_to_many :tags
 
+  geocoded_by :location, latitude: :lat, longitude: :long
+
   validates :title, presence: true
   validates :artist, presence: true
   validates :url, presence: true, uniqueness: true
   validates :location, presence: true
-  # validates :lat, presence: true
-  # validates :long, presence: true
 
   before_validation(on: :create) do
     
@@ -70,5 +70,7 @@ class Song < ActiveRecord::Base
 
 
   end
+  
+  after_validation :geocode
   
 end
