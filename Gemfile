@@ -46,3 +46,7 @@ group :test do
   gem 'email_spec'
   gem 'launchy'
 end
+
+group :production do
+  gem 'rails_12factor'
+end
