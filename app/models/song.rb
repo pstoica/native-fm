@@ -18,7 +18,7 @@ class Song < ActiveRecord::Base
 
 
     # BANDCAMP SCRAPIN'
-    if /http:\/\/.+\.bandcamp.com\/track\/.+/.match(self.url)
+    if /https?:\/\/.+\.bandcamp.com\/track\/.+/.match(self.url)
       doc = Nokogiri::HTML(open(self.url))
 
       doc.css('h2.trackTitle').each do |title|
@@ -46,14 +46,13 @@ class Song < ActiveRecord::Base
         self.bandcamp_track_number = track_number[0]
       end
     
-      puts errors.to_hash
-
     # SOUNDCLOUD DATA GATHERING
-    elsif /http:\/\/soundcloud.com\/\d*\/.*/.match(self.url)
+    elsif /https?:\/\/soundcloud.com\/\w*\/.*/.match(self.url)
+      puts "HI THIS IS THE SOUDNCLOUD CLIB"
       soundcloud = Soundcloud.new(client_id: ENV['SOUNDCLOUD_KEY'])
 
       resolve_info = soundcloud.get('/resolve', url: self.url)
-      self.artist = resolve_info.artist
+      self.artist = resolve_info.user.username
       self.title = resolve_info.title
 
       tags = []
