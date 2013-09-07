@@ -12,6 +12,9 @@ class Song < ActiveRecord::Base
   # validates :long, presence: true
 
   before_validation(on: :create) do
+    
+    # Find out what url we're working with,
+    # process accordingly.
     doc = Nokogiri::HTML(open(self.url))
 
     doc.css('h2.trackTitle').each do |title|

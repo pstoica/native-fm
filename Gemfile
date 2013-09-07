@@ -16,6 +16,7 @@ gem 'unicorn'
 gem 'figaro'
 gem 'delayed_job_active_record'
 gem 'daemons'
+gem 'soundcloud'
 
 gem 'bootstrap-sass', git: 'git://github.com/thomas-mcdonald/bootstrap-sass.git', branch: '3'
 
