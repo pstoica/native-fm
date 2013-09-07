@@ -44,6 +44,10 @@
 .module-sent {
   table {
     margin-bottom: 0;
+
+    tr:first-child td {
+      border-top: 0;
+    }
   }
 
   .song-counter {
