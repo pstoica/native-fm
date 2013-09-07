@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  attr_accessible :provider, :uid, :name, :email
   validates_presence_of :name
 
   has_many :sent, class_name: "Transmission", foreign_key: "sender_id"
@@ -15,5 +14,4 @@ class User < ActiveRecord::Base
       end
     end
   end
-
 end
