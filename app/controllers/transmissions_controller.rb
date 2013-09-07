@@ -10,7 +10,11 @@ class TransmissionsController < ApplicationController
     # data will be automatically scraped based on the URL. If the
     # song 
     
-    @song = Song.find_or_create_by(url: song_params[:url])
+    @song = Song.find_or_initialize_by(url: song_params[:url])
+    if !@song.location
+      @song.location = song_params[:location]
+    end
+    @song.save
 
     @transmission.song = @song
     @transmission.sender = current_user

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130907182959) do
+ActiveRecord::Schema.define(version: 20130907225419) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,9 @@ ActiveRecord::Schema.define(version: 20130907182959) do
     t.datetime "updated_at"
     t.string   "title"
     t.string   "artist"
+    t.string   "bandcamp_track_number"
+    t.string   "bandcamp_album_id"
+    t.string   "soundcloud_id"
   end
 
   create_table "songs_tags", id: false, force: true do |t|
