@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/thomas-mcdonald/bootstrap-sass.git
+  revision: 1344c58711e9ba30cbbd028908ea3fe6df73969d
+  branch: 3
+  specs:
+    bootstrap-sass (3.0.0.0)
+      sass (~> 3.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -240,8 +248,8 @@ PLATFORMS
 DEPENDENCIES
   better_errors
   binding_of_caller
+  bootstrap-sass!
   capybara
-  coffee-rails (~> 4.0.0)
   cucumber-rails
   database_cleaner (= 1.0.1)
   email_spec
