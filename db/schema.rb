@@ -11,10 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130907043644) do
+ActiveRecord::Schema.define(version: 20130907225419) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "delayed_jobs", force: true do |t|
+    t.integer  "priority",   default: 0, null: false
+    t.integer  "attempts",   default: 0, null: false
+    t.text     "handler",                null: false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
   create_table "songs", force: true do |t|
     t.string   "location"
@@ -26,6 +42,9 @@ ActiveRecord::Schema.define(version: 20130907043644) do
     t.datetime "updated_at"
     t.string   "title"
     t.string   "artist"
+    t.string   "bandcamp_track_number"
+    t.string   "bandcamp_album_id"
+    t.string   "soundcloud_id"
   end
 
   create_table "songs_tags", id: false, force: true do |t|
@@ -37,6 +56,11 @@ ActiveRecord::Schema.define(version: 20130907043644) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "tags_users", id: false, force: true do |t|
+    t.integer "tag_id",  null: false
+    t.integer "user_id", null: false
   end
 
   create_table "transmissions", force: true do |t|
