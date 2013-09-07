@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 
   has_many :sent, class_name: "Transmission", foreign_key: "sender_id"
   has_many :received, class_name: "Transmission", foreign_key: "receiver_id"
+  has_and_belongs_to_many :tags
 
   def self.create_with_omniauth(auth)
     create! do |user|
