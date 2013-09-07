@@ -14,6 +14,8 @@ gem 'simple_form', '>= 3.0.0.rc'
 gem 'slim'
 gem 'unicorn'
 gem 'figaro'
+gem 'delayed_job_active_record'
+gem 'daemons'
 
 gem 'bootstrap-sass', git: 'git://github.com/thomas-mcdonald/bootstrap-sass.git', branch: '3'
 
