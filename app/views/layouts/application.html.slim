@@ -1,19 +1,22 @@
 doctype html
-html
+html ng-app="NativeFM"
   head
     meta content="width=device-width, initial-scale=1.0" name="viewport" 
-      title= content_for?(:title) ? yield(:title) : "Native Fm"
-      meta content=(content_for?(:description) ? yield(:description) : "Native Fm") name="description" 
-        = stylesheet_link_tag "application", :media => "all"
-        = javascript_include_tag "application"
+      title= "NativeFM"
+      meta content=(content_for?(:description) ? yield(:description) : "NativeFM") name="description" 
+        = stylesheet_link_tag "application", media: "all"
         = csrf_meta_tags
         = yield(:head)
-  body class=("#{controller_name} #{action_name}") 
-    #container.container
-      header
-        = render 'layouts/navigation'
-        = render 'layouts/messages'
-      #main role="main" 
-        = yield
-      footer
-    /! ! end of #container
+  body
+    .navbar.navbar-default.navbar-fixed-top
+      .container
+        .navbar-header
+          button.navbar-toggle data-target=".navbar-collapse" data-toggle="collapse" type="button"
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          = link_to "NativeFM", root_path, class: "navbar-brand"
+    .container
+      = content_for?(:content) ? yield(:content) : yield
+
+    = javascript_include_tag "application"
