@@ -1,19 +1,26 @@
 doctype html
-html
+html ng-app="nativeFM"
   head
     meta content="width=device-width, initial-scale=1.0" name="viewport" 
-      title= content_for?(:title) ? yield(:title) : "Native Fm"
-      meta content=(content_for?(:description) ? yield(:description) : "Native Fm") name="description" 
-        = stylesheet_link_tag "application", :media => "all"
-        = javascript_include_tag "application"
-        = csrf_meta_tags
-        = yield(:head)
-  body class=("#{controller_name} #{action_name}") 
-    #container.container
-      header
-        = render 'layouts/navigation'
-        = render 'layouts/messages'
-      #main role="main" 
-        = yield
-      footer
-    /! ! end of #container
+      title= "NativeFM"
+      meta content=(content_for?(:description) ? yield(:description) : "NativeFM") name="description" 
+      = stylesheet_link_tag "application", media: "all"
+      script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"
+      = csrf_meta_tags
+      = yield(:head)
+  body
+    .navbar.navbar-default.navbar-fixed-top
+      .container
+        .navbar-header
+          button.navbar-toggle data-target=".navbar-collapse" data-toggle="collapse" type="button"
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          = link_to "NativeFM", root_path, class: "navbar-brand"
+        ul.nav.navbar-nav.pull-right
+          li
+            = link_to 'Logout', '/signout'
+    .container
+      = content_for?(:content) ? yield(:content) : yield
+
+    = javascript_include_tag "application"

@@ -1,0 +1,24 @@
+/* semantic color names */
+$green:  #62c193;
+$purple: #8d7aae;
+$orange: #e86243;
+$yellow: #f69944;
+$black:  #414042;
+$white: #fff;
+
+/* brand colors */
+$brand-primary: $purple;
+$brand-success: $green;
+$brand-warning: $yellow;
+$brand-danger:  $orange;
+$brand-info:    $yellow;
+
+/* body */
+$body-bg: $green;
+
+/* navbar */
+$navbar-default-bg: $green;
+$navbar-default-color: $white;
+$navbar-default-link-color: $white;
+$navbar-default-link-hover-color: $white;
+$navbar-default-brand-hover-color: $white;
