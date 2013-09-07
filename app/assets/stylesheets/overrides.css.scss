@@ -2,4 +2,25 @@
   border-color: $white;
   border-bottom-width: 2px;
   text-transform: lowercase;
+  font-size: 24px;
+}
+
+.form-control {
+  border: 0;
+
+  &:focus {
+    @include box-shadow(none);
+  }
+}
+
+button {
+  border: 0;
+}
+
+h3, .h3 {
+  font-size: 25px;
+}
+
+h4, .h4 {
+  font-size: 20px;
 }

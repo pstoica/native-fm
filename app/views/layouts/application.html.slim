@@ -6,6 +6,9 @@ html ng-app="nativeFM"
       meta content=(content_for?(:description) ? yield(:description) : "NativeFM") name="description" 
       = stylesheet_link_tag "application", media: "all"
       script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"
+      script type="text/javascript" src="//use.typekit.net/hhz4znu.js"
+      javascript:
+        try{Typekit.load();}catch(e){}
       = csrf_meta_tags
       = yield(:head)
   body
@@ -16,7 +19,8 @@ html ng-app="nativeFM"
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          = link_to "NativeFM", root_path, class: "navbar-brand"
+          = link_to root_path, class: "navbar-brand" do
+            = image_tag("logo.svg", alt: "native.fm")
         ul.nav.navbar-nav.pull-right
           li
             = link_to 'Logout', '/signout'
