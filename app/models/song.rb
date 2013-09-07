@@ -7,5 +7,13 @@ class Song < ActiveRecord::Base
   validates :location, presence: true
   validates :lat, presence: true
   validates :long, presence: true
+
+  before_validation(on: :create) do
+    doc = Nokogiri::HTML(open(this.url))
+
+    doc.css('.trackTitle').each do |title|
+      self.title = title.content
+    end
+  end
   
 end
