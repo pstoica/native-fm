@@ -2,6 +2,14 @@
   background: $white;
   padding: 10px;
   margin-bottom: 15px;
+
+  .text-muted {
+    font-weight: lighter;
+  }
+
+  .track-name, .artist-name {
+    font-weight: bold;
+  }
 }
 
 .module-header {
@@ -21,16 +29,14 @@
     color: $yellow;
   }
 
-  .text-muted {
-    font-weight: lighter;
-  }
-
-  .track-name, .artist-name {
-    font-weight: bold;
-  }
-
   .send-song {
     padding: 5px 30px;
     font-weight: bold;
+  }
+}
+
+.module-received {
+  a, .track-name {
+    color: $orange;
   }
 }

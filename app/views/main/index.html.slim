@@ -49,6 +49,37 @@
         span.tag>
           input.new-tag placeholder="+add more"
   .col-lg-6
-    .module
+    .module.module-received
       h3.module-header receive songs in return
-      #receivedSongMap gm-map=true gm-map-id="'receivedSongMap'" gm-map-options="{mapTypeControlOptions:{mapTypeIds: [google.maps.MapTypeId.ROADMAP]},streetViewControl: false,zoom:1}"
+      #receivedSongMap gm-map=true gm-map-id="'receivedSongMap'" gm-map-options="{mapTypeControlOptions:{mapTypeIds: [google.maps.MapTypeId.ROADMAP]},streetViewControl: false,zoom:2}"
+      .songs-received
+        .song
+          .song-counter 1
+          .song-info
+            h4
+              span.track-name Christmas
+              span.text-muted< by
+              span.artist-name< Places to Hide
+            em.text-muted> from
+            | Atlanta, GA
+            .row
+              p.col-lg-6.text-left
+                em.text-muted> received
+                | yesterday
+              p.col-lg-6.text-right
+                a href="#" love this? pass it along!
+        .song
+          .song-counter 2
+          .song-info
+            h4
+              span.track-name Christmas
+              span.text-muted< by
+              span.artist-name< Places to Hide
+            em.text-muted> from
+            | Atlanta, GA
+            .row
+              p.col-lg-6.text-left
+                em.text-muted> received
+                | yesterday
+              p.col-lg-6.text-right
+                a href="#" love this? pass it along!

@@ -1,0 +1,23 @@
+.song {
+  @include clearfix();
+  border-bottom: 1px solid $gray-lighter;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+}
+
+.song-counter {
+  float: left;
+  width: 5%;
+  line-height: 45px;
+}
+
+.song-info {
+  float: left;
+  width: 95%;
+
+  h4 {
+    margin-bottom: 2px;
+  }
+}
