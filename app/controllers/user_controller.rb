@@ -5,8 +5,5 @@ class UserController < ApplicationController
 
   def received
   end
-
-  def create
-  end
   
 end
