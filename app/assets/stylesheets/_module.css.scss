@@ -40,3 +40,17 @@
     color: $orange;
   }
 }
+
+.module-sent {
+  table {
+    margin-bottom: 0;
+  }
+
+  .song-counter {
+    width: 5%;
+  }
+
+  .track-name {
+    color: $blue;
+  }
+}

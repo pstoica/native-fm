@@ -38,7 +38,7 @@
         button.btn-primary.btn-lg.send-song send song
     .module.module-preferences
       h3.module-header song preferences
-      p.text-muted let us know what sort of songs you would like to receive by adding tags
+      h4.text-muted let us know what sort of songs you would like to receive by adding tags
       .tags
         span.tag>
           | #
@@ -48,6 +48,15 @@
           span.tag-name indie punk
         span.tag>
           input.new-tag placeholder="+add more"
+    .module.module-sent
+      h3.module-header songs you have sent
+      table.table
+        tr
+          td.song-counter 1
+          td.h4
+            span.track-name Christmas
+            span.text-muted< by
+            span.artist-name< Places to Hide
   .col-lg-6
     .module.module-received
       h3.module-header receive songs in return
@@ -62,11 +71,11 @@
               span.artist-name< Places to Hide
             em.text-muted> from
             | Atlanta, GA
-            .row
-              p.col-lg-6.text-left
+            .song-footer
+              .song-timestamp
                 em.text-muted> received
                 | yesterday
-              p.col-lg-6.text-right
+              .song-reshare
                 a href="#" love this? pass it along!
         .song
           .song-counter 2
@@ -77,9 +86,9 @@
               span.artist-name< Places to Hide
             em.text-muted> from
             | Atlanta, GA
-            .row
-              p.col-lg-6.text-left
+            .song-footer
+              .song-timestamp
                 em.text-muted> received
                 | yesterday
-              p.col-lg-6.text-right
+              .song-reshare
                 a href="#" love this? pass it along!

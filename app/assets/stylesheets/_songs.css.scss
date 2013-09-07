@@ -1,23 +1,36 @@
 .song {
   @include clearfix();
+  padding-bottom: 7px;
   border-bottom: 1px solid $gray-lighter;
 
   &:last-child {
     border-bottom: 0;
   }
-}
 
-.song-counter {
-  float: left;
-  width: 5%;
-  line-height: 45px;
-}
+  .song-counter {
+    float: left;
+    width: 5%;
+    line-height: 45px;
+  }
 
-.song-info {
-  float: left;
-  width: 95%;
+  .song-info {
+    float: left;
+    width: 95%;
 
-  h4 {
-    margin-bottom: 2px;
+    h4 {
+      margin-bottom: 2px;
+    }
+  }
+
+  .song-footer {
+    @include clearfix();
+    .song-timestamp, .song-reshare {
+      width: 50%;
+      float: left;
+    }
+
+    .song-reshare {
+      text-align: right;
+    }
   }
 }
