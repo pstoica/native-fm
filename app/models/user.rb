@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  attr_accessible :provider, :uid, :name, :email
   validates_presence_of :name
 
   def self.create_with_omniauth(auth)
@@ -12,5 +11,4 @@ class User < ActiveRecord::Base
       end
     end
   end
-
 end
