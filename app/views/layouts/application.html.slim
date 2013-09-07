@@ -17,6 +17,9 @@ html ng-app="nativeFM"
             span.icon-bar
             span.icon-bar
           = link_to "NativeFM", root_path, class: "navbar-brand"
+        ul.nav.navbar-nav.pull-right
+          li
+            = link_to 'Logout', '/signout'
     .container
       = content_for?(:content) ? yield(:content) : yield
 
