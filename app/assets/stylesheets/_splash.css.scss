@@ -1,0 +1,34 @@
+.splash {
+  background: image-url("tile.png");
+  color: $white;
+
+  .logo {
+    width: 100%;
+    height: auto;
+  }
+
+  .tagline {
+    font-weight: 400;
+    margin-bottom: 25px;
+  }
+
+  .icon-twitter {
+    position: relative;
+    top: 2px;
+    margin-right: 10px;
+  }
+
+  .icon-facebook {
+    position: relative;
+    top: 2px;
+    margin-right: 5px;
+  }
+
+  .btn {
+    margin-right: 18px;
+  }
+
+  .splash-map {
+    margin-top: 18px;
+  }
+}

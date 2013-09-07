@@ -21,6 +21,7 @@ html ng-app="nativeFM"
           li
             = link_to 'Logout', '/signout'
     .container
-      = content_for?(:content) ? yield(:content) : yield
+      .row
+        = content_for?(:content) ? yield(:content) : yield
 
     = javascript_include_tag "application"

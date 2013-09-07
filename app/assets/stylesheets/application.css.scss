@@ -13,7 +13,9 @@
 
 @import "variables";
 @import "bootstrap";
+@import "fonts";
 @import "overrides";
+@import "splash";
 @import "module";
 @import "tags";
 @import "songs";
@@ -34,4 +36,15 @@ body {
   .navbar-header {
     float: left;
   }
-} 
+}
+
+.btn-boxed {
+  border: 3px solid $white;
+  color: $white;
+  padding: 12px 18px;
+
+  &:hover {
+    background-color: $white;
+    color: $green;
+  }
+}

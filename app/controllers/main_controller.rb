@@ -4,7 +4,7 @@ class MainController < ApplicationController
 
   def index
     unless user_signed_in?
-      render :splash
+      render :splash, layout: false
     end
   end
 end

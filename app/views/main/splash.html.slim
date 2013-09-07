@@ -1,3 +1,28 @@
-p Welcome to NativeFM!
-p
-  = link_to 'Sign in with Twitter!', '/auth/twitter'
+doctype html
+html
+  head
+    meta content="width=device-width, initial-scale=1.0" name="viewport" 
+      title= "NativeFM"
+      meta content="Discover and share local music with music lovers from around the world." name="description"
+      = stylesheet_link_tag "application", media: "all"
+      script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"
+      script type="text/javascript" src="//use.typekit.net/hhz4znu.js"
+      javascript:
+        try{Typekit.load();}catch(e){}
+  body.splash
+    .container
+      .col-lg-8
+        = image_tag("logo.svg", class: "logo", alt: "native.fm")
+        h1.tagline
+          | discover + share local music with
+          br
+          | music lovers from around the world
+        div
+          a.btn.btn-lg.btn-boxed href="/auth/twitter"
+            i.icon-twitter
+            | login with twitter
+          a.btn.btn-lg.btn-boxed href="/auth/facebook"
+            i.icon-facebook
+            | login with facebook
+      .col-lg-4
+        = image_tag("map.png", class: "splash-map")
