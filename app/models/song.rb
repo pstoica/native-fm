@@ -6,7 +6,7 @@ class Song < ActiveRecord::Base
 
   validates :title, presence: true
   validates :artist, presence: true
-  validates :url, presence: true
+  validates :url, presence: true, uniqueness: true
   validates :location, presence: true
   # validates :lat, presence: true
   # validates :long, presence: true
@@ -21,6 +21,13 @@ class Song < ActiveRecord::Base
     doc.css('[itemprop=byArtist]').each do |artist|
       self.artist = artist.content.strip
     end
+
+    tags = []
+    doc.css('.tag').each do |tag|
+      tag = Tag.find_or_create_by(name: tag.content.downcase.strip)
+      tags << tag
+    end
+    self.tags = tags
 
   end
   
