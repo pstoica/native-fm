@@ -3,11 +3,11 @@
   font-style: italic;
 }
 
-.tag-name {
+.tag {
   color: $white;
 }
 
-.new-tag {
+.tag-input {
   border: 0;
   background: transparent;
   font-style: italic;
@@ -23,8 +23,13 @@
     margin-bottom: 15px;
   }
 
-  .new-tag {
+  .tag-input {
     @include placeholder($yellow-dark);
+    color: $yellow-dark;
+  }
+
+  .tag:before {
+    content: "#";
     color: $yellow-dark;
   }
 }
@@ -36,8 +41,13 @@
     margin-bottom: 0;
   }
 
-  .new-tag {
+  .tag-input {
     @include placeholder($purple-dark);
+    color: $purple-dark;
+  }
+
+  .tag:before {
+    content: "#";
     color: $purple-dark;
   }
 }
