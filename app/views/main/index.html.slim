@@ -30,7 +30,7 @@
         input.tag-input placeholder="+add more"
     .module.module-sent
       h3.module-header songs you have sent
-      table.table ng-controller="SentSongsCtrl"
+      table.table.ng-cloak ng-controller="SentSongsCtrl"
         tbody
           tr ng-repeat="transmission in sent"
             td.song-counter="{{$index}}"
@@ -43,7 +43,7 @@
     .module.module-received
       h3.module-header receive songs in return
       #receivedSongMap gm-map=true gm-map-id="'receivedSongMap'" gm-map-options="{mapTypeControlOptions:{mapTypeIds: [google.maps.MapTypeId.ROADMAP]},streetViewControl: false,zoom:2}"
-      .songs-received ng-controller="InboxCtrl"
+      .songs-received.ng-cloak ng-controller="InboxCtrl"
         .song ng-repeat="transmission in inbox"
           .song-counter="{{ $index }}"
           .song-info

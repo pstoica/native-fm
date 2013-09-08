@@ -5,13 +5,13 @@ class SongsController < ApplicationController
 
   
   def sent
-    @sent = Transmission.includes(:song).where(sender: current_user)
+    @sent = Transmission.includes(:song).where(sender: current_user).limit(5)
 
     respond_with(@sent)
   end
 
   def received
-    @received = Transmission.includes(:song).where(receiver: current_user)
+    @received = Transmission.includes(:song).where(receiver: current_user).limit(10)
 
     respond_with(@received)
   end
