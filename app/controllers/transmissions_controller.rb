@@ -19,6 +19,7 @@ class TransmissionsController < ApplicationController
     end
     @song.save
 
+    
     @transmission.song = @song
     @transmission.sender = current_user
     @transmission.save
