@@ -5,7 +5,7 @@ NativeFm::Application.routes.draw do
   put "user", to: "user#update", defaults: { format: 'json' }
   get "user", to: "user#show", defaults: { format: 'json' }
 
-  resources :tags, defaults: { format: 'json' }
+  resources :preferences, defaults: { format: 'json' }
 
   get "songs/sent", to: "songs#sent", defaults: { format: 'json' }
   get "songs/received", to: "songs#received", defaults: { format: 'json' }
