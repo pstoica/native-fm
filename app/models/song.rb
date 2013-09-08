@@ -55,7 +55,7 @@ class Song < ActiveRecord::Base
 
       tags = []
       resolve_info.tag_list.split(" ").each do |tag|
-        tag = Tag.find_or_create_by(name: tag.content.downcase.strip)
+        tag = Tag.find_or_create_by(name: tag.downcase.strip)
         tags << tag
       end
       self.tags = tags
