@@ -4,7 +4,7 @@
       h3.module-header send a local song you love to a stranger
       form ng-submit="submitSong()"
         .form-group.song-url
-          input.form-control ng-model="song.url" ng-pattern="" type="text" placeholder="Bandcamp or SoundCloud track URL"
+          input.form-control ng-model="song.url" ng-pattern="" type="text" placeholder="Search SoundCloud, or paste a Bandcamp/SoundCloud URL"
         .song-preview.ng-cloak ng-if="songPreview"
           h4
             span.track-name
@@ -22,6 +22,15 @@
             input.tag-input ng-model="tagEditor.tag" placeholder="+add more" ui-keydown="{'enter':'addTag($event)', '188':'addTag($event)'}" size="{{tagFieldLength()}}" ng-hide="canAddTags()"
           .text-center
             button.btn-primary.btn-lg.send-song type="submit" send song
+      table.table.ng-cloak ng-hide="!searchResults || searchResults.length == 0"
+        tbody
+          tr class="appear" ng-repeat="result in searchResults"
+            td.song-counter="{{$index + 1}}"
+            td.h4
+              a href="javascript:0" ng-click="addSearchResult(result.permalink_url)"
+                span.track-name="{{result.title}}"
+                span.text-muted< by
+                span.artist-name<="{{result.user.username}}"
     .module.module-preferences ng-controller="SettingsCtrl"
       h3.module-header song preferences
       h4.text-muted let us know what sort of songs you would like to receive by adding tags

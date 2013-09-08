@@ -5,13 +5,15 @@ angular.module('nativeFM.controllers', []).
     "$scope",
     "$http",
     "$rootScope",
-    function($scope, $http, $rootScope) {
+    "$timeout",
+    function($scope, $http, $rootScope, $timeout) {
       $scope.song = {
         url: "",
         location: "",
         tags: []
       };
 
+      $scope.searchResults = [];
       $scope.songPreview = null;
       $scope.tagEditor = {
         tag: ""
@@ -65,10 +67,26 @@ angular.module('nativeFM.controllers', []).
         $scope.song.url = songUrl;
       });
 
+      $scope.addSearchResult = function(url) {
+        $scope.song.url = url;
+      };
+
+      $scope.searchTimeout = null;
+
       $scope.$watch('song.url', function(newUrl) {
-        // FIXME: check if soundcloud or bandcamp
+        if ($scope.searchTimeout) {
+          $timeout.cancel($scope.searchTimeout);
+        }
+
+        $scope.searchTimeout = $timeout(function() {
+          $scope.updateResults(newUrl);
+        }, 500);
+      });
+
+      $scope.updateResults = function(newUrl) {
         if (_.isEmpty(newUrl)) {
           $scope.songPreview = undefined;
+          $scope.searchResults = [];
         } else {
           if (/https?:\/\/soundcloud.com\/\w*\/.*/.test(newUrl) ||
           /https?:\/\/.+\.bandcamp.com\/track\/.+/.test(newUrl)) {
@@ -78,10 +96,19 @@ angular.module('nativeFM.controllers', []).
               }
             }).success(function(song) {
               $scope.songPreview = song;
+              $scope.searchResults = []
+            });
+          } else {
+            $http.get('/songs/search', {
+              params: {
+                q: newUrl
+              }
+            }).success(function(searchResults) {
+              $scope.searchResults = searchResults;
             });
           }
         }
-      });
+      }
     }
   ]).
   controller('SettingsCtrl', [

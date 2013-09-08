@@ -76,7 +76,7 @@ class SongsController < ApplicationController
 
   def search
     @soundcloud = Soundcloud.new(client_id: ENV['SOUNDCLOUD_KEY'])
-    respond_with(@soundcloud.get('/tracks', q: params[:q]))
+    respond_with(@soundcloud.get('/tracks', q: params[:q], limit: 10))
   end
 
 end
