@@ -88,7 +88,7 @@ angular.module('nativeFM.controllers', []).
           $scope.songPreview = undefined;
           $scope.searchResults = [];
         } else {
-          if (/https?:\/\/soundcloud.com\/\w*\/.*/.test(newUrl) ||
+          if (/https?:\/\/soundcloud.com\/[\w\-]*\/.*/.test(newUrl) ||
           /https?:\/\/.+\.bandcamp.com\/track\/.+/.test(newUrl)) {
             $http.get('/songs/data', {
               params: {
