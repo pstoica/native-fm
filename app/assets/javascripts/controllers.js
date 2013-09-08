@@ -2,15 +2,15 @@
 
 angular.module('nativeFM.controllers', []).
   controller('SendSongCtrl', [
-    $scope,
-    $http,
+    '$scope',
+    '$http',
     function($scope, $http) {
 
     }
   ]).
   controller('SettingsCtrl', [
-    $scope,
-    $http,
+    '$scope',
+    '$http',
     function($scope, $http) {
 
     }
