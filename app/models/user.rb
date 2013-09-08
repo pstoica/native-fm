@@ -15,4 +15,8 @@ class User < ActiveRecord::Base
       end
     end
   end
+
+  def as_json(options={})
+    super(:include => [:tags])
+  end
 end

@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('nativeFM', [
-  'restangular',
   'ng-rails-csrf',
+  'ui.keypress',
   'ajoslin.promise-tracker',
   'AngularGM',
   'nativeFM.filters',

@@ -4,7 +4,6 @@ class UserController < ApplicationController
   respond_to :json
 
   def update
-    
     tags = []
     params[:tags].each do |name|
       tag = Tag.find_or_create_by(name: name.downcase.strip)
@@ -15,7 +14,9 @@ class UserController < ApplicationController
     current_user.save
 
     respond_with(current_user)
-
   end
 
+  def show
+    respond_with(current_user)
+  end
 end

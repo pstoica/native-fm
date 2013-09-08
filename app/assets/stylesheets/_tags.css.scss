@@ -5,12 +5,19 @@
 
 .tag {
   color: $white;
+
+  &:hover {
+    color: $white;
+    text-decoration: line-through;
+  }
 }
 
 .tag-input {
   border: 0;
   background: transparent;
   font-style: italic;
+  max-width: 100%;
+
   &:focus {
     outline: 0;
   }

@@ -1,6 +1,6 @@
 .row
   .col-lg-6
-    .module.module-send
+    .module.module-send ng-controller="SendSongCtrl"
       h3.module-header send a local song you love to a stranger
       .form-group
         input.form-control type="text" placeholder="Bandcamp or SoundCloud track URL"
@@ -18,16 +18,16 @@
         span.tag> indie rock
         span.tag> pop
         span.tag> Atlanta
-        input.tag-input placeholder="+add more"
+        input.tag-input ng-model="newTag.name" placeholder="+add more" ui-keydown="{'enter':'addTag($event)', '188':'addTag($event)'}" size="{{tagFieldLength()}}"
       .text-center
         button.btn-primary.btn-lg.send-song send song
-    .module.module-preferences
+    .module.module-preferences ng-controller="SettingsCtrl"
       h3.module-header song preferences
       h4.text-muted let us know what sort of songs you would like to receive by adding tags
       .tags
-        span.tag> sweden
-        span.tag> indie punk
-        input.tag-input placeholder="+add more"
+        a.tag.ng-cloak href="javascript:0" ng-repeat="tag in tags" ng-click="removeTag(tag)"
+          | {{tag.name}} 
+        input.tag-input ng-model="newTag.name" placeholder="+add more" ui-keydown="{'enter':'addTag($event)', '188':'addTag($event)'}" size="{{tagFieldLength()}}" ng-hide="canAddTags()"
     .module.module-sent
       h3.module-header songs you have sent
       table.table
