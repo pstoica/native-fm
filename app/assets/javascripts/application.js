@@ -15,6 +15,7 @@
 //= require bootstrap
 //= require lodash
 //= require angular
+//= require moment
 //= require ng-rails-csrf
 //= require angular-promise-tracker
 //= require angular-gm
