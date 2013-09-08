@@ -40,10 +40,11 @@
               span.artist-name<="{{transmission.song.artist}}"
 
   .col-lg-6
-    .module.module-received
+    .module.module-received ng-controller="InboxCtrl"
       h3.module-header receive songs in return
-      #receivedSongMap gm-map=true gm-map-id="'receivedSongMap'" gm-map-options="{mapTypeControlOptions:{mapTypeIds: [google.maps.MapTypeId.ROADMAP]},streetViewControl: false,zoom:2}"
-      .songs-received.ng-cloak ng-controller="InboxCtrl"
+      #receivedSongMap ng-controller="MapCtrl" gm-map=true gm-map-id="'receivedSongMap'" gm-map-options="{mapTypeControlOptions:{mapTypeIds: [google.maps.MapTypeId.ROADMAP]},streetViewControl: false,zoom:2}"
+        gm-markers gm-objects="inbox" gm-get-lat-lng="{ lat: object.song.lat, lng: object.song.long }"
+      .songs-received.ng-cloak 
         .song ng-repeat="transmission in inbox"
           .song-counter="{{ $index }}"
           .song-info
