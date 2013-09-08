@@ -43,8 +43,8 @@
   .col-lg-6
     .module.module-received ng-controller="InboxCtrl"
       h3.module-header receive songs in return
-      #receivedSongMap ng-controller="MapCtrl" gm-map=true gm-map-id="'receivedSongMap'" gm-map-options="{mapTypeControlOptions:{mapTypeIds: [google.maps.MapTypeId.ROADMAP]},streetViewControl: false,zoom:2}"
-        gm-markers gm-objects="inbox" gm-get-lat-lng="{ lat: object.song.lat, lng: object.song.long }"
+      #receivedSongMap ng-controller="MapCtrl" gm-map=true gm-map-id="'receivedSongMap'" gm-map-options="mapOptions" gm-bounds="mapBounds"
+        gm-markers gm-objects="inbox" gm-get-lat-lng="{ lat: object.song.lat, lng: object.song.long }" gm-get-marker-options="markerOptions"
       .songs-received.ng-cloak 
         .song ng-repeat="transmission in inbox"
           .song-counter="{{ $index + 1 }}"

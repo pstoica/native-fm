@@ -123,10 +123,34 @@ angular.module('nativeFM.controllers', []).
       $http.get("/songs/received").
       success(function(data, status, headers, config) {
         $scope.inbox = data;
+        $scope.updateBounds();
       }).
       error(function(data, status, headers, config) {
         $scope.error = "We couldn't load the received songs";
       });
+
+      $scope.mapOptions = {
+        mapTypeControlOptions: {
+          mapTypeIds: [google.maps.MapTypeId.ROADMAP]
+        },
+        streetViewControl: false,
+        zoom: 5
+      };
+
+      $scope.markerOptions = {
+        icon: '/assets/marker.png'
+      };
+
+      $scope.mapBounds = new google.maps.LatLngBounds();
+
+      $scope.updateBounds = function() {
+        var bounds = new google.maps.LatLngBounds();
+
+        angular.forEach($scope.inbox, function(item) {
+          bounds.extend(new google.maps.LatLng(item.song.lat, item.song.long));
+        });
+        $scope.mapBounds = bounds;
+      };
 
       $scope.embedCode = function(transmission) {
         var embed;
