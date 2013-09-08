@@ -10,7 +10,6 @@ gem 'jbuilder', '~> 1.2'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
-gem 'pg'
 gem 'simple_form', '>= 3.0.0.rc'
 gem 'slim'
 gem 'unicorn'
@@ -33,6 +32,7 @@ group :development do
   gem 'haml-rails'
   gem 'haml2slim'
   gem 'html2haml'
+  gem 'pg'
   gem 'hub', :require=>nil
   gem 'quiet_assets'
   gem 'rb-fchange', :require=>false
@@ -55,4 +55,5 @@ end
 
 group :production do
   gem 'rails_12factor'
+  gem 'mysql'
 end
