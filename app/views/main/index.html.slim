@@ -34,7 +34,7 @@
       table.table.ng-cloak ng-controller="SentSongsCtrl"
         tbody
           tr ng-repeat="transmission in sent"
-            td.song-counter="{{$index}}"
+            td.song-counter="{{$index + 1}}"
             td.h4
               span.track-name="{{transmission.song.title}}"
               span.text-muted< by
