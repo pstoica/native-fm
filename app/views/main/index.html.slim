@@ -33,7 +33,7 @@
       h3.module-header songs you have sent
       table.table.ng-cloak ng-controller="SentSongsCtrl"
         tbody
-          tr ng-repeat="transmission in sent"
+          tr class="appear" ng-repeat="transmission in sent"
             td.song-counter="{{$index + 1}}"
             td.h4
               span.track-name="{{transmission.song.title}}"
@@ -46,7 +46,7 @@
       #receivedSongMap ng-controller="MapCtrl" gm-map=true gm-map-id="'receivedSongMap'" gm-map-options="mapOptions" gm-bounds="mapBounds"
         gm-markers gm-objects="inbox" gm-get-lat-lng="{ lat: object.song.lat, lng: object.song.long }" gm-get-marker-options="markerOptions"
       .songs-received.ng-cloak 
-        .song ng-repeat="transmission in inbox"
+        .song ng-animate="'animate'" ng-repeat="transmission in inbox"
           .song-counter="{{ $index + 1 }}"
           .song-info
             h4

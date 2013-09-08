@@ -19,6 +19,8 @@ gem 'delayed_job_active_record'
 gem 'daemons'
 gem 'soundcloud'
 gem 'geocoder'
+gem 'pg'
+
 
 gem 'bootstrap-sass', git: 'git://github.com/thomas-mcdonald/bootstrap-sass.git', branch: '3'
 
@@ -33,7 +35,6 @@ group :development do
   gem 'haml-rails'
   gem 'haml2slim'
   gem 'html2haml'
-  gem 'pg'
   gem 'hub', :require=>nil
   gem 'quiet_assets'
   gem 'rb-fchange', :require=>false
@@ -57,5 +58,4 @@ end
 group :production do
   gem 'therubyracer'
   gem 'rails_12factor'
-  gem 'mysql2'
 end

@@ -127,7 +127,6 @@ angular.module('nativeFM.controllers', []).
 
       // Get your data here
       $scope.updateInbox = function() {
-        console.log("UPDATING INBOX");
         $http.get("/songs/received").
         success(function(data, status, headers, config) {
           $scope.inbox = data;
