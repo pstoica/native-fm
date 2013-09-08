@@ -41,7 +41,6 @@ angular.module('nativeFM.controllers', []).
       };
 
       $scope.addTag = function($event) {
-        console.log($scope.tagEditor.tag);
         $scope.song.tags.push($scope.tagEditor.tag);
         $scope.tagEditor.tag = "";
         $event.preventDefault();
@@ -64,7 +63,6 @@ angular.module('nativeFM.controllers', []).
         if (_.isEmpty(newUrl)) {
           $scope.songPreview = undefined;
         } else {
-          console.log(encodeURI(newUrl));
           $http.get('/songs/data', {
             params: {
               url: encodeURI(newUrl)
@@ -119,7 +117,8 @@ angular.module('nativeFM.controllers', []).
   controller('InboxCtrl', [
     "$scope",
     "$http",
-    function($scope, $http) {
+    "$sce",
+    function($scope, $http, $sce) {
       // Get your data here
       $http.get("/songs/received").
       success(function(data, status, headers, config) {
@@ -129,6 +128,25 @@ angular.module('nativeFM.controllers', []).
         $scope.error = "We couldn't load the received songs";
       });
 
+      $scope.embedCode = function(transmission) {
+        var embed;
+
+        // FIXME: what the fuck am i doing here, is this 1999
+        if (transmission.song.soundcloud_id) {
+          embed = '<iframe width="100%" height="166" scrolling="no" frameborder="no" src="' +
+            'https://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F' +
+            transmission.song.soundcloud_id +
+            '&amp;color=e86243&amp;auto_play=false&amp;show_artwork=true"></iframe>';
+        } else if (transmission.song.bandcamp_album_id) {
+          embed = '<iframe style="border: 0; width: 100%; height: 120px;" src="http://bandcamp.com/EmbeddedPlayer/album=' +
+            transmission.song.bandcamp_album_id +
+            '/size=medium/bgcol=ffffff/linkcol=e86243/transparent=true/t=' +
+            transmission.song.bandcamp_track_number +
+            '/" seamless></iframe>';
+        }
+
+        return $sce.trustAsHtml(embed);
+      };
     }
   ]).
   controller('SentSongsCtrl', [
