@@ -5,6 +5,7 @@ angular.module('nativeFM', [
   'ui.keypress',
   'ajoslin.promise-tracker',
   'AngularGM',
+  'angularMoment',
   'nativeFM.filters',
   'nativeFM.services',
   'nativeFM.directives',
