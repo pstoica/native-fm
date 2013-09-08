@@ -136,7 +136,7 @@ angular.module('nativeFM.controllers', []).
           embed = '<iframe width="100%" height="166" scrolling="no" frameborder="no" src="' +
             'https://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F' +
             transmission.song.soundcloud_id +
-            '&amp;color=e86243&amp;auto_play=false&amp;show_artwork=true"></iframe>';
+            '&amp;color=e86243&amp;auto_play=false&amp;show_artwork=true&amp;show_comments=false"></iframe>';
         } else if (transmission.song.bandcamp_album_id) {
           embed = '<iframe style="border: 0; width: 100%; height: 120px;" src="http://bandcamp.com/EmbeddedPlayer/album=' +
             transmission.song.bandcamp_album_id +
