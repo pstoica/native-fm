@@ -8,4 +8,8 @@ class Transmission < ActiveRecord::Base
     Delayed::Job.enqueue MatchTransmission.new(self), queue: 'matching'
   end
 
+  def as_json(options={})
+    super(:include => [:song])
+  end
+
 end
