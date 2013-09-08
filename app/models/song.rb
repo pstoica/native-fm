@@ -29,12 +29,10 @@ class Song < ActiveRecord::Base
         self.artist = artist.content.strip
       end
 
-      tags = []
       doc.css('.tag').each do |tag|
         tag = Tag.find_or_create_by(name: tag.content.downcase.strip)
-        tags << tag
+        self.tags << tag
       end
-      self.tags = tags
 
 
       # CRAZY SCRAPIN' JAVASCRIPTS

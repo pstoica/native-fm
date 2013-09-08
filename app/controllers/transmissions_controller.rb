@@ -11,8 +11,11 @@ class TransmissionsController < ApplicationController
     # song 
     
     @song = Song.find_or_initialize_by(url: song_params[:url])
+
+    # Shit is fresh
     if !@song.location
       @song.location = song_params[:location]
+      @song.tags = song_params[:tags]
     end
     @song.save
 
@@ -29,6 +32,6 @@ class TransmissionsController < ApplicationController
 
   private
     def song_params
-      params.require(:song).permit(:url, :location)
+      params.require(:song).permit(:url, :location, :tags)
     end
 end

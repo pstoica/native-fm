@@ -16,15 +16,15 @@ angular.module('nativeFM.controllers', []).
     }
   ]).
   controller('InboxCtrl', [
-    $scope,
-    $http,
+    "$scope",
+    "$http",
     function($scope, $http) {
 
     }
   ]).
   controller('SentSongsCtrl', [
-    $scope,
-    $http,
+    "$scope",
+    "$http",
     function($scope, $http) {
 
     }
