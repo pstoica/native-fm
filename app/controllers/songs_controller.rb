@@ -63,13 +63,13 @@ class SongsController < ApplicationController
   end
   
   def sent
-    @sent = Transmission.includes(:song).where(sender: current_user).limit(5)
+    @sent = Transmission.includes(:song).where(sender: current_user).order("updated_at DESC").limit(5)
 
     respond_with(@sent)
   end
 
   def received
-    @received = Transmission.includes(:song).where(receiver: current_user).limit(10)
+    @received = Transmission.includes(:song).where(receiver: current_user).order("updated_at DESC").limit(10)
 
     respond_with(@received)
   end
