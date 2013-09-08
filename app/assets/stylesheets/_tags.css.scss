@@ -5,11 +5,6 @@
 
 .tag {
   color: $white;
-
-  &:hover {
-    color: $white;
-    text-decoration: line-through;
-  }
 }
 
 .tag-input {
@@ -56,5 +51,10 @@
   .tag:before {
     content: "#";
     color: $purple-dark;
+  }
+
+  .tag:hover {
+    color: $white;
+    text-decoration: line-through;
   }
 }

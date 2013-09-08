@@ -1,5 +1,7 @@
-class SongsController < ApplicationController
+require 'nokogiri'
+require 'open-uri'
 
+class SongsController < ApplicationController
   respond_to :json
 
   def data
