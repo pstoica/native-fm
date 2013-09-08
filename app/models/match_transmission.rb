@@ -14,13 +14,21 @@ class MatchTransmission < Struct.new(:transmission)
       raise ArgumentError, "No open transmissions"
     end
 
-    random_transmission = open_transmissions[rand(open_transmissions.length)]
+    transmission.attempts += 1
+    max_transmission = open_transmissions.max_by do |t|
+      t.calculate_compatibility(sender.tags)
+    end
 
-    transmission.receiver = random_transmission.sender
-    transmission.save
+    if max_transmission.calculate_compatibility(sender.tags) == 0 and transmission.attempts < 4
+      transmission.save
+      raise ArgumentError, "No good match"
+    else
+      transmission.receiver = max_transmission.sender
+      transmission.save
 
-    random_transmission.receiver = transmission.sender
-    random_transmission.save
+      max_transmission.receiver = transmission.sender
+      max_transmission.save
+    end
   end
 
 

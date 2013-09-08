@@ -8,6 +8,10 @@ class Transmission < ActiveRecord::Base
     Delayed::Job.enqueue MatchTransmission.new(self), queue: 'matching'
   end
 
+  def calculate_compatibility(tags)
+    return (tags & self.song.tags).size
+  end
+
   def as_json(options={})
     super(:include => [:song])
   end
