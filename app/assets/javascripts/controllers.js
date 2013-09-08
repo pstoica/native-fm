@@ -60,6 +60,11 @@ angular.module('nativeFM.controllers', []).
         });
       };
 
+      $scope.$on('reshare', function(event, songUrl) {
+        console.log(event);
+        $scope.song.url = songUrl;
+      });
+
       $scope.$watch('song.url', function(newUrl) {
         // FIXME: check if soundcloud or bandcamp
         if (_.isEmpty(newUrl)) {
@@ -121,28 +126,28 @@ angular.module('nativeFM.controllers', []).
     "$http",
     "$sce",
     "$timeout",
-    function($scope, $http, $sce, $timeout) {
-
-      $scope.prevId = null;
-
+    "$rootScope",
+    function($scope, $http, $sce, $timeout, $rootScope) {
       // Get your data here
       $scope.updateInbox = function() {
+        console.log("UPDATING INBOX");
         $http.get("/songs/received").
         success(function(data, status, headers, config) {
           $scope.inbox = data;
-
-          if ($scope.inbox.length && ($scope.prevId === null || $scope.prevId != $scope.inbox[0].id)) {
-            $scope.updateBounds();
-            $scope.prevId = $scope.inbox[0].id;
-          }
-
-          $timeout($scope.updateInbox, 8000);
+          $scope.updateBounds();
+          $timeout(function() {
+            $scope.updateInbox();
+          }, 8000);
         }).
         error(function(data, status, headers, config) {
           $scope.error = "We couldn't load the received songs";
-          $timeout($scope.updateInbox, 5000);
+          $timeout(function() {
+            $scope.updateInbox();
+          }, 5000);
         });
       };
+
+      $scope.updateInbox();
 
       $scope.mapOptions = {
         mapTypeControlOptions: {
@@ -157,6 +162,10 @@ angular.module('nativeFM.controllers', []).
       };
 
       $scope.mapBounds = new google.maps.LatLngBounds();
+
+      $scope.reshare = function(songUrl) {
+        $rootScope.$broadcast('reshare', songUrl);
+      };
 
       $scope.updateBounds = function() {
         var bounds = new google.maps.LatLngBounds();
@@ -186,8 +195,6 @@ angular.module('nativeFM.controllers', []).
 
         return $sce.trustAsHtml(embed);
       };
-
-      $scope.updateInbox();
     }
   ]).
   controller('SentSongsCtrl', [
