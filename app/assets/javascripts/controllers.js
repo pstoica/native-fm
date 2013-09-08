@@ -40,8 +40,8 @@ angular.module('nativeFM.controllers', []).
         name: ""
       };
 
-      $http.get('/tags').success(function(tags) {
-        $scope.tags = tags;
+      $http.get('/preferences').success(function(preferences) {
+        $scope.preferences = preferences;
       });
 
       $scope.tagFieldLength = function() {
@@ -49,25 +49,25 @@ angular.module('nativeFM.controllers', []).
       };
 
       $scope.canAddTags = function() {
-        if ($scope.tags) {
-          return $scope.tags.length >= 10;
+        if ($scope.preferences) {
+          return $scope.preferences.length >= 10;
         } else {
           return false;
         }
       };
 
       $scope.addTag = function($event) {
-        $http.post('/tags', {tag: $scope.newTag}).success(function(tag) {
-          $scope.tags.push(tag);
+        $http.post('/preferences', {tag: $scope.newTag}).success(function(preference) {
+          $scope.preferences.push(preference);
           $scope.newTag = {
             name: ""
           };
         });
       };
 
-      $scope.removeTag = function(tag) {
-        $http.delete('/tags/' + tag.id).success(function() {
-          $scope.tags = _.without($scope.tags, tag);
+      $scope.removePreference = function(preference) {
+        $http.delete('/preferences/' + preference.id).success(function() {
+          $scope.preferences = _.without($scope.preferences, preference);
         });
       };
     }

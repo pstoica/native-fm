@@ -25,8 +25,8 @@
       h3.module-header song preferences
       h4.text-muted let us know what sort of songs you would like to receive by adding tags
       .tags
-        a.tag.ng-cloak href="javascript:0" ng-repeat="tag in tags" ng-click="removeTag(tag)"
-          | {{tag.name}} 
+        a.tag.ng-cloak href="javascript:0" ng-repeat="preference in preferences" ng-click="removePreference(preference)"
+          | {{preference.tag.name}} 
         input.tag-input ng-model="newTag.name" placeholder="+add more" ui-keydown="{'enter':'addTag($event)', '188':'addTag($event)'}" size="{{tagFieldLength()}}" ng-hide="canAddTags()"
     .module.module-sent
       h3.module-header songs you have sent
