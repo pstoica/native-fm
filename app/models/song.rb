@@ -44,7 +44,7 @@ class Song < ActiveRecord::Base
       end
     
     # SOUNDCLOUD DATA GATHERING
-    elsif /https?:\/\/soundcloud.com\/\w*\/.*/.match(self.url)
+    elsif /https?:\/\/soundcloud.com\/[\w\-]*\/.*/.match(self.url)
       puts "HI THIS IS THE SOUDNCLOUD CLIB"
       soundcloud = Soundcloud.new(client_id: ENV['SOUNDCLOUD_KEY'])
 
