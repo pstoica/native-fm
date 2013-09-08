@@ -2,22 +2,30 @@
 
 angular.module('nativeFM.controllers', []).
   controller('SendSongCtrl', [
-    function() {
+    $scope,
+    $http,
+    function($scope, $http) {
 
     }
   ]).
   controller('SettingsCtrl', [
-    function() {
+    $scope,
+    $http,
+    function($scope, $http) {
 
     }
   ]).
   controller('InboxCtrl', [
-    function() {
+    $scope,
+    $http,
+    function($scope, $http) {
 
     }
   ]).
   controller('SentSongsCtrl', [
-    function() {
+    $scope,
+    $http,
+    function($scope, $http) {
 
     }
   ]);
