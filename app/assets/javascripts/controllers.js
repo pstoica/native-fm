@@ -25,11 +25,21 @@ angular.module('nativeFM.controllers', []).
 
       };
 
-      $scope.removeTag = function(tag) {
-        $http.delete('/tags/' + tag.id).success(function() {
-          $scope.tags = _.without($scope.tags, tag);
-        });
-      };
+      $scope.$watch('songUrl', function(newUrl) {
+        // FIXME: check if soundcloud or bandcamp
+        if (_.isEmpty(newUrl)) {
+          $scope.song = undefined;
+        } else {
+          console.log(encodeURI(newUrl));
+          $http.get('/songs/data', {
+            params: {
+              url: encodeURI(newUrl)
+            }
+          }).success(function(song) {
+            $scope.song = song;
+          });
+        }
+      });
     }
   ]).
   controller('SettingsCtrl', [
