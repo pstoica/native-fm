@@ -70,13 +70,16 @@ angular.module('nativeFM.controllers', []).
         if (_.isEmpty(newUrl)) {
           $scope.songPreview = undefined;
         } else {
-          $http.get('/songs/data', {
-            params: {
-              url: encodeURI(newUrl)
-            }
-          }).success(function(song) {
-            $scope.songPreview = song;
-          });
+          if (/https?:\/\/soundcloud.com\/\w*\/.*/.test(newUrl) ||
+          /https?:\/\/.+\.bandcamp.com\/track\/.+/.test(newUrl)) {
+            $http.get('/songs/data', {
+              params: {
+                url: encodeURI(newUrl)
+              }
+            }).success(function(song) {
+              $scope.songPreview = song;
+            });
+          }
         }
       });
     }

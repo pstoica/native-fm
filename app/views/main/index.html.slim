@@ -4,7 +4,7 @@
       h3.module-header send a local song you love to a stranger
       form ng-submit="submitSong()"
         .form-group.song-url
-          input.form-control ng-model="song.url" type="text" placeholder="Bandcamp or SoundCloud track URL"
+          input.form-control ng-model="song.url" ng-pattern="" type="text" placeholder="Bandcamp or SoundCloud track URL"
         .song-preview.ng-cloak ng-if="songPreview"
           h4
             span.track-name
