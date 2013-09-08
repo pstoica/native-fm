@@ -4,7 +4,8 @@ angular.module('nativeFM.controllers', []).
   controller('SendSongCtrl', [
     "$scope",
     "$http",
-    function($scope, $http) {
+    "$rootScope",
+    function($scope, $http, $rootScope) {
       $scope.song = {
         url: "",
         location: "",
@@ -54,6 +55,7 @@ angular.module('nativeFM.controllers', []).
         $http.post('/transmissions', {
           song: $scope.song
         }).success(function(song) {
+          $rootScope.$broadcast('newSong', song);
           $scope.reset();
         });
       };
@@ -120,14 +122,20 @@ angular.module('nativeFM.controllers', []).
     "$sce",
     function($scope, $http, $sce) {
       // Get your data here
-      $http.get("/songs/received").
-      success(function(data, status, headers, config) {
-        $scope.inbox = data;
-        $scope.updateBounds();
-      }).
-      error(function(data, status, headers, config) {
-        $scope.error = "We couldn't load the received songs";
-      });
+      $scope.updateInbox = function() {
+        console.log("UPDATING INBOX");
+        $http.get("/songs/received").
+        success(function(data, status, headers, config) {
+          $scope.inbox = data;
+          setTimeout(function() { $scope.$apply($scope.updateInbox()) }, 8000);
+        }).
+        error(function(data, status, headers, config) {
+          $scope.error = "We couldn't load the received songs";
+          setTimeout(function() { $scope.$apply($scope.updateInbox()) }, 5000);
+        });
+      };
+
+      $scope.updateInbox();
 
       $scope.mapOptions = {
         mapTypeControlOptions: {
@@ -176,13 +184,23 @@ angular.module('nativeFM.controllers', []).
   controller('SentSongsCtrl', [
     "$scope",
     "$http",
-    function($scope, $http) {
-      $http.get("/songs/sent").
-      success(function(data, status, headers, config) {
-        $scope.sent = data;
-      }).
-      error(function(data, status, headers, config) {
-        $scope.error = "We couldn't load the sent songs";
+    "$rootScope",
+    function($scope, $http, $rootScope) {
+
+      $scope.updateSent = function() {
+        $http.get("/songs/sent").
+        success(function(data, status, headers, config) {
+          $scope.sent = data;
+        }).
+        error(function(data, status, headers, config) {
+          $scope.error = "We couldn't load the sent songs";
+        }); 
+      }
+
+      $rootScope.$on('newSong', function(event) {
+        $scope.updateSent();
       });
+
+      $scope.updateSent();
     }
   ]);
