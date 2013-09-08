@@ -120,27 +120,30 @@ angular.module('nativeFM.controllers', []).
     "$scope",
     "$http",
     "$sce",
-    function($scope, $http, $sce) {
+    "$timeout",
+    function($scope, $http, $sce, $timeout) {
+
+      $scope.prevId = null;
+
       // Get your data here
       $scope.updateInbox = function() {
         console.log("UPDATING INBOX");
         $http.get("/songs/received").
         success(function(data, status, headers, config) {
           $scope.inbox = data;
-          $scope.updateBounds();
-          $timeout(function() {
-            $scope.updateInbox();
-          }, 8000);
+
+          if ($scope.inbox.length && ($scope.prevId === null || $scope.prevId != $scope.inbox[0].id)) {
+            $scope.updateBounds();
+            $scope.prevId = $scope.inbox[0].id;
+          }
+
+          $timeout($scope.updateInbox, 8000);
         }).
         error(function(data, status, headers, config) {
           $scope.error = "We couldn't load the received songs";
-          $timeout(function() {
-            $scope.updateInbox();
-          }, 5000);
+          $timeout($scope.updateInbox, 5000);
         });
       };
-
-      $scope.updateInbox();
 
       $scope.mapOptions = {
         mapTypeControlOptions: {
@@ -184,6 +187,8 @@ angular.module('nativeFM.controllers', []).
 
         return $sce.trustAsHtml(embed);
       };
+
+      $scope.updateInbox();
     }
   ]).
   controller('SentSongsCtrl', [
