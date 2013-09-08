@@ -30,49 +30,29 @@
         input.tag-input placeholder="+add more"
     .module.module-sent
       h3.module-header songs you have sent
-      table.table
+      table.table ng-controller="SentSongsCtrl"
         tbody
-          tr
-            td.song-counter 1
+          tr ng-repeat="transmission in sent"
+            td.song-counter="{{$index}}"
             td.h4
-              span.track-name Christmas
+              span.track-name="{{transmission.song.title}}"
               span.text-muted< by
-              span.artist-name< Places to Hide
-          tr
-            td.song-counter 2
-            td.h4
-              span.track-name Christmas
-              span.text-muted< by
-              span.artist-name< Places to Hide
+              span.artist-name<="{{transmission.song.artist}}"
+
   .col-lg-6
     .module.module-received
       h3.module-header receive songs in return
       #receivedSongMap gm-map=true gm-map-id="'receivedSongMap'" gm-map-options="{mapTypeControlOptions:{mapTypeIds: [google.maps.MapTypeId.ROADMAP]},streetViewControl: false,zoom:2}"
       .songs-received ng-controller="InboxCtrl"
         .song ng-repeat="transmission in inbox"
-          .song-counter {{ $index }}
+          .song-counter="{{ $index }}"
           .song-info
             h4
-              span.track-name {{ transmission.}}
+              span.track-name="{{ transmission.song.title }}"
               span.text-muted< by
-              span.artist-name< Places to Hide
+              span.artist-name<="{{ transmission.song.artist }}"
             em.text-muted> from
-            | Atlanta, GA
-            .song-footer
-              .song-timestamp
-                em.text-muted> received
-                | yesterday
-              .song-reshare
-                a href="#" love this? pass it along!
-        .song
-          .song-counter 2
-          .song-info
-            h4
-              span.track-name Christmas
-              span.text-muted< by
-              span.artist-name< Places to Hide
-            em.text-muted> from
-            | Atlanta, GA
+            | {{ song.location }}
             .song-footer
               .song-timestamp
                 em.text-muted> received

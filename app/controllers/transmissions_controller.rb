@@ -15,7 +15,7 @@ class TransmissionsController < ApplicationController
     # Shit is fresh
     if !@song.location
       @song.location = song_params[:location]
-      @song.tags = song_params[:tags]
+      if song_params[:tags].nil? then @song.tags = [] else @song.tags = song_params[:tags] end
     end
     @song.save
 

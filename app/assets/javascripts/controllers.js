@@ -2,15 +2,15 @@
 
 angular.module('nativeFM.controllers', []).
   controller('SendSongCtrl', [
-    $scope,
-    $http,
+    "$scope",
+    "$http",
     function($scope, $http) {
 
     }
   ]).
   controller('SettingsCtrl', [
-    $scope,
-    $http,
+    "$scope",
+    "$http",
     function($scope, $http) {
 
     }
@@ -27,13 +27,19 @@ angular.module('nativeFM.controllers', []).
       error(function(data, status, headers, config) {
         $scope.error = "We couldn't load the received songs";
       });
-      
+
     }
   ]).
   controller('SentSongsCtrl', [
     "$scope",
     "$http",
     function($scope, $http) {
-
+      $http.get("/songs/sent").
+      success(function(data, status, headers, config) {
+        $scope.sent = data;
+      }).
+      error(function(data, status, headers, config) {
+        $scope.error = "We couldn't load the sent songs";
+      });
     }
   ]);
