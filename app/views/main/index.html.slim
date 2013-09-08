@@ -53,7 +53,7 @@
               span.track-name="{{ transmission.song.title }}"
               span.text-muted< by
               span.artist-name<="{{ transmission.song.artist }}"
-            div ng-bind-html="embedCode(transmission)"
+            .embed-widget ng-bind-html="embedCode(transmission)"
             em.text-muted> from
             | {{ transmission.song.location }}
             .song-footer
