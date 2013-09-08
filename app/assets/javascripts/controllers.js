@@ -127,11 +127,16 @@ angular.module('nativeFM.controllers', []).
         $http.get("/songs/received").
         success(function(data, status, headers, config) {
           $scope.inbox = data;
-          setTimeout(function() { $scope.$apply($scope.updateInbox()) }, 8000);
+          $scope.updateBounds();
+          $timeout(function() {
+            $scope.updateInbox();
+          }, 8000);
         }).
         error(function(data, status, headers, config) {
           $scope.error = "We couldn't load the received songs";
-          setTimeout(function() { $scope.$apply($scope.updateInbox()) }, 5000);
+          $timeout(function() {
+            $scope.updateInbox();
+          }, 5000);
         });
       };
 
