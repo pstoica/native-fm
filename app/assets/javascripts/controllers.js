@@ -5,30 +5,64 @@ angular.module('nativeFM.controllers', []).
     "$scope",
     "$http",
     function($scope, $http) {
-      $scope.newTag = {
-        name: ""
+      $scope.song = {
+        url: "",
+        location: "",
+        tags: []
+      };
+
+      $scope.songPreview = null;
+      $scope.tagEditor = {
+        tag: ""
+      };
+
+      $scope.reset = function() {
+        $scope.song = {
+          url: "",
+          location: "",
+          tags: []
+        };
+
+        $scope.songPreview = null;
+        $scope.tagEditor.tag = null;
       };
 
       $scope.tagFieldLength = function() {
-        return Math.max($scope.newTag.name.length, 10);
+        return Math.max($scope.tagEditor.tag.length, 10);
       };
 
       $scope.canAddTags = function() {
-        if ($scope.song) {
-          return $scope.song.tags.length >= 10;
+        if ($scope.songPreview) {
+          return (($scope.songPreview.tags.length) +
+            ($scope.song.tags.length)) >= 10;
         } else {
           return false;
         }
       };
 
       $scope.addTag = function($event) {
-
+        console.log($scope.tagEditor.tag);
+        $scope.song.tags.push($scope.tagEditor.tag);
+        $scope.tagEditor.tag = "";
+        $event.preventDefault();
       };
 
-      $scope.$watch('songUrl', function(newUrl) {
+      $scope.removeTag = function(tag) {
+        $scope.song.tags = _.without($scope.song.tags, tag);
+      };
+
+      $scope.submitSong = function() {
+        $http.post('/transmissions', {
+          song: $scope.song
+        }).success(function(song) {
+          $scope.reset();
+        });
+      };
+
+      $scope.$watch('song.url', function(newUrl) {
         // FIXME: check if soundcloud or bandcamp
         if (_.isEmpty(newUrl)) {
-          $scope.song = undefined;
+          $scope.songPreview = undefined;
         } else {
           console.log(encodeURI(newUrl));
           $http.get('/songs/data', {
@@ -36,7 +70,7 @@ angular.module('nativeFM.controllers', []).
               url: encodeURI(newUrl)
             }
           }).success(function(song) {
-            $scope.song = song;
+            $scope.songPreview = song;
           });
         }
       });

@@ -2,23 +2,26 @@
   .col-lg-6
     .module.module-send ng-controller="SendSongCtrl"
       h3.module-header send a local song you love to a stranger
-      .form-group
-        input.form-control ng-model="songUrl" type="text" placeholder="Bandcamp or SoundCloud track URL"
-      .ng-cloak ng-if="song"
-        h4
-          span.track-name
-            | {{song.title}}
-          span.text-muted< by
-          span.artist-name<
-            | {{song.artist}}
+      form ng-submit="submitSong()"
         .form-group
-          input.form-control.band-location type="text" placeholder="band location"
-        .tags
-          span.tag ng-repeat="tag in song.tags"
-            | {{tag.name}} 
-          input.tag-input ng-model="newTag.name" placeholder="+add more" ui-keydown="{'enter':'addTag($event)', '188':'addTag($event)'}" size="{{tagFieldLength()}}"
-        .text-center
-          button.btn-primary.btn-lg.send-song send song
+          input.form-control ng-model="song.url" type="text" placeholder="Bandcamp or SoundCloud track URL"
+        .ng-cloak ng-if="songPreview"
+          h4
+            span.track-name
+              | {{songPreview.title}}
+            span.text-muted< by
+            span.artist-name<
+              | {{songPreview.artist}}
+          .form-group
+            input.form-control.band-location type="text" ng-model="song.location" placeholder="band location"
+          .tags
+            span.tag ng-repeat="tag in songPreview.tags"
+              | {{tag.name}} 
+            a.tag.ng-cloak href="javascript:0" ng-repeat="tag in song.tags" ng-click="removeTag(tag)"
+              | {{tag}} 
+            input.tag-input ng-model="tagEditor.tag" placeholder="+add more" ui-keydown="{'enter':'addTag($event)', '188':'addTag($event)'}" size="{{tagFieldLength()}}" ng-hide="canAddTags()"
+          .text-center
+            button.btn-primary.btn-lg.send-song type="submit" send song
     .module.module-preferences ng-controller="SettingsCtrl"
       h3.module-header song preferences
       h4.text-muted let us know what sort of songs you would like to receive by adding tags
