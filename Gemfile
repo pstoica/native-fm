@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+ruby '1.9.3'
 
 gem 'rails', '4.0.0'
 gem 'sass-rails', '~> 4.0.0'
@@ -19,7 +19,6 @@ gem 'delayed_job_active_record'
 gem 'daemons'
 gem 'soundcloud'
 gem 'geocoder'
-gem 'pg'
 
 
 gem 'bootstrap-sass', git: 'git://github.com/thomas-mcdonald/bootstrap-sass.git', branch: '3'
@@ -58,4 +57,5 @@ end
 group :production do
   gem 'therubyracer'
   gem 'rails_12factor'
+  gem 'mysql2'
 end
