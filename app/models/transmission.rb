@@ -7,7 +7,10 @@ class Transmission < ActiveRecord::Base
   validates :song_id, presence: true
 
   after_save(on: :create) do
-    Delayed::Job.enqueue MatchTransmission.new(self), queue: 'matching'
+    client = Qless::Client.new
+
+    queue = client.queues['matching']
+    queue.put(MatchTransmissionJob, transmission_id: self.id)
   end
 
   def calculate_compatibility(tags)
